@@ -7,6 +7,9 @@ import tech.oliver.ecommerce_build.run.entities.UserEntiy;
 import tech.oliver.ecommerce_build.run.repository.BillingAddressRepository;
 import tech.oliver.ecommerce_build.run.repository.UserRepository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class UserService {
 
@@ -25,12 +28,26 @@ public class UserService {
         billingAddress.setNumber(dto.number());
         billingAddress.setComplement(dto.complement());
 
-       var savedBillingAddress = billingAddressRepository.save(billingAddress);
-
        var user = new UserEntiy();
        user.setFullName(dto.fullName());
-       user.setBillingAddress(savedBillingAddress);
+       user.setBillingAddress(billingAddress);
 
         return userRepository.save(user);
+    }
+
+    public Optional<UserEntiy> findById(UUID userId) {
+        return userRepository.findById(userId);
+    }
+
+    public boolean deleteById(UUID userId) {
+
+        var user = userRepository.findById(userId);
+
+        if(user.isPresent()){
+
+            userRepository.deleteById(userId);
+        }
+
+        return user.isPresent();
     }
 }
