@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @Table (name = "tb_users")
-public class UserEntiy {
+public class UserEntity {
 
     @Id
     @Column(name = "user_id")
@@ -20,7 +20,7 @@ public class UserEntiy {
     @JoinColumn(name = "billing_address_id")
     private BillingAddressEntity billingAddress;
 
-    public UserEntiy() {
+    public UserEntity() {
     }
 
     public UUID getUserId() {

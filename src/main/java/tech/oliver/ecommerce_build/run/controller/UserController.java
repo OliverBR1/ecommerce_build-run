@@ -3,7 +3,7 @@ package tech.oliver.ecommerce_build.run.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.oliver.ecommerce_build.run.controller.dto.CreateUserDto;
-import tech.oliver.ecommerce_build.run.entities.UserEntiy;
+import tech.oliver.ecommerce_build.run.entities.UserEntity;
 import tech.oliver.ecommerce_build.run.service.UserService;
 
 import java.net.URI;
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserEntiy> findById(@PathVariable("userId")UUID userId){
+    public ResponseEntity<UserEntity> findById(@PathVariable("userId")UUID userId){
 
       var user =  userService.findById(userId);
 

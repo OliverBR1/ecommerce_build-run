@@ -3,7 +3,7 @@ package tech.oliver.ecommerce_build.run.service;
 import org.springframework.stereotype.Service;
 import tech.oliver.ecommerce_build.run.controller.dto.CreateUserDto;
 import tech.oliver.ecommerce_build.run.entities.BillingAddressEntity;
-import tech.oliver.ecommerce_build.run.entities.UserEntiy;
+import tech.oliver.ecommerce_build.run.entities.UserEntity;
 import tech.oliver.ecommerce_build.run.repository.BillingAddressRepository;
 import tech.oliver.ecommerce_build.run.repository.UserRepository;
 
@@ -21,21 +21,21 @@ public class UserService {
         this.billingAddressRepository = billingAddressRepository;
     }
 
-    public UserEntiy createUser(CreateUserDto dto){
+    public UserEntity createUser(CreateUserDto dto){
 
         var billingAddress =  new BillingAddressEntity();
         billingAddress.setAddress(dto.address());
         billingAddress.setNumber(dto.number());
         billingAddress.setComplement(dto.complement());
 
-       var user = new UserEntiy();
+       var user = new UserEntity();
        user.setFullName(dto.fullName());
        user.setBillingAddress(billingAddress);
 
         return userRepository.save(user);
     }
 
-    public Optional<UserEntiy> findById(UUID userId) {
+    public Optional<UserEntity> findById(UUID userId) {
         return userRepository.findById(userId);
     }
 

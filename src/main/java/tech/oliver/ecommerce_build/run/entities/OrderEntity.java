@@ -23,7 +23,7 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntiy user;
+    private UserEntity user;
 
     @OneToMany(mappedBy = "id.order", cascade = CascadeType.ALL)
     private List<OrderItemEntity> items;
@@ -55,11 +55,11 @@ public class OrderEntity {
         this.orderDate = orderDate;
     }
 
-    public UserEntiy getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UserEntiy user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 

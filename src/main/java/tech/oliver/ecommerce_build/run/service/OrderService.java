@@ -8,7 +8,6 @@ import tech.oliver.ecommerce_build.run.controller.dto.OrderItemDto;
 import tech.oliver.ecommerce_build.run.controller.dto.OrderSummaryDto;
 import tech.oliver.ecommerce_build.run.entities.*;
 import tech.oliver.ecommerce_build.run.exception.CreateOrderException;
-import tech.oliver.ecommerce_build.run.repository.OrderItemRepository;
 import tech.oliver.ecommerce_build.run.repository.OrderRepository;
 import tech.oliver.ecommerce_build.run.repository.ProductRepository;
 import tech.oliver.ecommerce_build.run.repository.UserRepository;
@@ -50,7 +49,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public UserEntiy validateUser(CreateOrderDto dto){
+    public UserEntity validateUser(CreateOrderDto dto){
 
        return userRepository.findById(dto.userId())
                 .orElseThrow(() -> new CreateOrderException("user not found"));
