@@ -102,14 +102,12 @@ public class OrderService {
     public Page<OrderSummaryDto> findAll(Integer page, Integer pageSize) {
 
         return orderRepository.findAll(PageRequest.of(page, pageSize))
-                .map(entity -> {
-                    return new OrderSummaryDto(
-                            entity.getOrderId(),
-                            entity.getOrderDate(),
-                            entity.getUser().getUserId(),
-                            entity.getTotal()
-                    );
-                });
+                .map(entity -> new OrderSummaryDto(
+                        entity.getOrderId(),
+                        entity.getOrderDate(),
+                        entity.getUser().getUserId(),
+                        entity.getTotal()
+                ));
     }
 
     public Optional<OrderEntity> findById(Long orderId) {
